@@ -35,6 +35,7 @@ mkdir build-client
 cd build-client
 cmake -D CMAKE_INSTALL_PREFIX=/usr \
     -D NO_SHIBBOLETH=1 \
+    -D BUILD_TESTING=OFF \
     -D BUILD_UPDATER=ON \
     -D QTKEYCHAIN_LIBRARY=/app/usr/lib/x86_64-linux-gnu/libqt5keychain.so \
     -D QTKEYCHAIN_INCLUDE_DIR=/app/usr/include/qt5keychain/ \
@@ -47,9 +48,7 @@ make DESTDIR=/app install
 # Move stuff around
 cd /app
 
-mv ./usr/lib/x86_64-linux-gnu/nextcloud/* ./usr/lib/x86_64-linux-gnu/
 mv ./usr/lib/x86_64-linux-gnu/* ./usr/lib/
-rm -rf ./usr/lib/nextcloud
 rm -rf ./usr/lib/cmake
 rm -rf ./usr/include
 rm -rf ./usr/mkspecs
